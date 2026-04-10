@@ -2,6 +2,9 @@
 def procesar_mensaje (mensaje):
     mensaje = mensaje.lower()
 
+    if any(p in mensaje for p in ["hola", "tardes", "día"]):
+        return "Hola buenos días, somos Icon Stone, nos ubicamos en Zapopan, Jalisco, ¿En qué podemos ayudarle?"
+
     if (any(p in mensaje for p in ["hola", "quiero"]) 
     and 
     any(p in mensaje for p in ["información", "informacion"])
@@ -22,7 +25,7 @@ def procesar_mensaje (mensaje):
     #if any (p in mensaje for p in ["precio", "medidas", "cotizar", "costo"]):
     #    return "Claro, para apoyarte mejor con la información del material o la cotización que requieres mediante un asesor, nos podrías regalar tu nombre y el nombre de la empresa de donde nos contactas si es que vienes de una.Te identificas como: constructora, arquitecto, transformador o cliente final.Esto para ponerte en contacto con uno de nuestros asesores. El te podrá compartir especificaciones, catálogo, precios y también realizar cotización del material que necesites."
     
-    if (any(p in mensaje for p in ["manejas", "tienes", "puedes", "pasame" "compartir"]) 
+    if (any(p in mensaje for p in ["manejas", "tienes", "puedes", "pasame", "compartir"]) 
     and 
     any(p in mensaje for p in ["catalogo", "catálogo"])
     ): return "Claro, una de nuestras asesoras puede brindarle nuestro catálogo del material que necesitas para que pueda conocer todos lo modelos que manejamos y ver si alguno es similar a lo que busca, por favor, compartenos tu nombre, el nombre de la empresa de la que nos contactas y con que te identificas más: diseñador, arquitecto, carpintero, marmolero, distribuidor, constructora, ingeniero, contratista. De esta manera te asignaremos una asesora experta en tu rama para que pueda darle seguimiento a tu solicitud"
@@ -44,7 +47,7 @@ def procesar_mensaje (mensaje):
     
     if (any(p in mensaje for p in ["manejan", "hacen"]) 
     and 
-    any(p in mensaje for p in ["envíos", "envios", "entrega", "envío" "envio"])
+    any(p in mensaje for p in ["envíos", "envios", "entrega", "envío", "envio"])
     ): return "Claro, se puede coordinar un envío, el flete iría por su cuenta"
 
     #if any (p in mensaje for p in ("envío","envio", "flete","entrega", "envios", "envíos")):
@@ -66,9 +69,14 @@ def procesar_mensaje (mensaje):
     and 
     any(p in mensaje for p in ["corte", "a medida"])
     ): return "Hola buen día! Gracias por contactar con Icon Stone, líder en recubrimientos de alta calidad y vanguardia. Estamos ubicados en Zapopan, Jalisco, ¿En qué podemos ayudarle?"
-    
 
 
     #if any (p in mensaje for p in ["haces", "realizas"]) and "cortes" in mensaje:
     #    return "Únicamente vendemos el material, sin embargo en el AMG podemos recomendarle algún transformador o instalador"
 
+    if (any(p in mensaje for p in ["ocupo", "necesito"]) 
+    and 
+    any(p in mensaje for p in ["fachada", "cotizar", "metros", "vetas", "como", "este"])
+    ): return "Claro, una de nuestras asesoras puede brindarle nuestro catálogo de mármol que necesitas para que pueda conocer todos lo modelos que manejamos y ver si alguno es similar a lo que busca, por favor, compartenos tu nombre, el nombre de la empresa de la que nos contactas y con que te identificas más: diseñador, arquitecto, carpintero, marmolero, distribuidor, constructora, ingeniero, contratista. De esta manera te asignaremos una asesora experta en tu rama para que pueda darle seguimiento a tu solicitud"
+
+    return "Gracias por tu mensaje 😊 ¿Podrías darme más detalles para ayudarte mejor?"
