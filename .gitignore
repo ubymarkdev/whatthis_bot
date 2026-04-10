@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+.env/
+.env.*
+
+# Django
+*.log
+*.pot
+*.mo
+local_settings.py
+settings_local.py
+
+# Database
+*.sqlite3
+
+# Media & static
+media/
+staticfiles/
+
+# IDEs / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Secrets / keys
+*.pem
+*.key
+*.crt
+*.pfx
+*.der
+secrets.json
+
+# Node (if any tooling)
+node_modules/
+
+# Test / coverage
+.coverage
+htmlcov/
+.pytest_cache/
