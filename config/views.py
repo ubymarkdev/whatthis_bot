@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from whattis_bot.services.logic import procesar_mensaje
 import os
 
-VERIFY_TOKEN = ""
+VERIFY_TOKEN = "icon_bot_2026"
 @csrf_exempt
 def webhook(request):
     if request.method == "GET": #facebook solicita existencia de servidor, se encarga de responder
