@@ -2,6 +2,7 @@ import json, requests
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from whattis_bot.services.logic import procesar_mensaje
+import os
 
 VERIFY_TOKEN = ""
 @csrf_exempt
@@ -51,7 +52,7 @@ def webhook(request):
         url = "https://graph.facebook.com/v18.0/523314284285/messages"
 
         headers = {
-            "Authorization": "Bearer VERIFY_TOKEN",
+            "Authorization": f"Bearer {os.getenv('ACCESS_TOKEN')}",
             "Content-Type": "application/json"
         }
         payload = {
