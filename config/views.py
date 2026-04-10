@@ -49,7 +49,7 @@ def webhook(request):
         texto_del_mensaje = str(mensaje)
         print ("Mensaje recibido", texto_del_mensaje)
         respuesta = procesar_mensaje(texto_del_mensaje)
-        url = "https://graph.facebook.com/v18.0/523314284285/messages"
+        url = "https://graph.facebook.com/v18.0/1115529711636375/messages"
 
         headers = {
             "Authorization": f"Bearer {os.getenv('ACCESS_TOKEN')}",
