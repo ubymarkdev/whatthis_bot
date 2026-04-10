@@ -36,6 +36,7 @@ def webhook(request):
         numero_de_usuario = contacts[0].get("wa_id")
         if not numero_de_usuario:
             return JsonResponse({"status":"ok"})
+        print("Número usuario:", numero_de_usuario)
         messages = value.get("messages")
         if not messages:
             return JsonResponse({"status":"ok"})
