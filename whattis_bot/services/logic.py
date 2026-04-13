@@ -23,7 +23,7 @@ def procesar_mensaje (mensaje):
     #if any (p in mensaje for p in ["precio", "medidas", "cotizar", "costo"]):
     #    return "Claro, para apoyarte mejor con la información del material o la cotización que requieres mediante un asesor, nos podrías regalar tu nombre y el nombre de la empresa de donde nos contactas si es que vienes de una.Te identificas como: constructora, arquitecto, transformador o cliente final.Esto para ponerte en contacto con uno de nuestros asesores. El te podrá compartir especificaciones, catálogo, precios y también realizar cotización del material que necesites."
     
-    if (any(p in mensaje for p in ["manejas", "tienes", "puedes", "pasame", "compartir", "modelos", "comparteme", "enviame" "enviarme", "pásame", "compárteme", "modelos" "mostrarme" "enseñarme", "enseñame", "ver"]) 
+    if (any(p in mensaje for p in ["manejas", "tienes", "puedes", "pasame", "compartir", "modelos", "comparteme", "enviame" "enviarme", "pásame", "compárteme", "modelos" "mostrarme" "enseñarme", "enseñame", "ver", "enséñame"]) 
     and 
     any(p in mensaje for p in ["catalogo", "catálogo", "manejas", "manejan"])
     ): return "Claro, una de nuestras asesoras puede brindarle nuestro catálogo del material que necesitas para que pueda conocer todos lo modelos que manejamos y ver si alguno es similar a lo que busca, por favor, compartenos tu nombre, el nombre de la empresa de la que nos contactas y con que te identificas más: diseñador, arquitecto, carpintero, marmolero, distribuidor, constructora, ingeniero, contratista. De esta manera te asignaremos una asesora experta en tu rama para que pueda darle seguimiento a tu solicitud"
@@ -100,7 +100,7 @@ def procesar_mensaje (mensaje):
 #no manejamos pvc 
     if (any(p in mensaje for p in ["manejan", "laminas", "tipo"]) 
     and 
-    any(p in mensaje for p in ["pvc", "tipo marmol", "tipo mármol"])
+    any(p in mensaje for p in ["pvc"])
     ): return "No manejamos material de PVC únicamente de piedra natural, ¿Le interesa conocer las opciones de piedra natural que manejamos?"
     #COSTO DEL FLETE
     if (any(p in mensaje for p in ["costo", "precio", "cuanto", "cuánto"]) 
@@ -110,7 +110,7 @@ def procesar_mensaje (mensaje):
 #MATERIALES QUE SI MANEJAMOS / COMERCIALES
     if (any(p in mensaje for p in ["manejan", "precio", "tienen"]) 
     and 
-    any(p in mensaje for p in ["negro san gabriel"])
+    any(p in mensaje for p in ["gabriel", "galaxy", "nevada", "lactea", "láctea", "taj", "mahal", "veracruz"])
     ): return "Claro, ¿Le interesa cotizar?"
 
     return "No entendí la pregunta xd"
