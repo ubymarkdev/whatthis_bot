@@ -23,11 +23,10 @@ def respuesta_meta (estado):
         respuesta = "Nos ubicamos en Zapopan, Jalisco, le comparto nuestra ubicación: https://maps.app.goo.gl/ZkCWEutdTEjBTi866"
     elif estado == "pre_cotizacion":
         respuesta = "Claro, para realizar su cotización y brindarle precios mediante un asesor nos podría apoyar con los siguentes datos: nos podrías regalar tu nombre y el nombre de la empresa de donde nos contactas si es que vienes de una. Te identificas como: constructora, arquitecto, transformador o cliente final. Esto para ponerte en contacto con uno de nuestros asesores. El te podrá compartir especificaciones y precios del material que necesites"
-        respuesta = "Buenos días! ¿En qué podemos ayudarte"
     elif estado == "informandose":
         respuesta = "En breve, nos pondremos en contacto contigo para poder darte la información que requieres por este mismo medio"
     elif estado == "informandose_cortes":
-        respuesta == "No hacemos cortes a medida, pero podemos cotizarle la placa de mármol, granito, cuarcita, cuarzo o piedra tecnológica que necesite"
+        respuesta = "No hacemos cortes a medida, pero podemos cotizarle la placa de mármol, granito, cuarcita, cuarzo o piedra tecnológica que necesite"
     else:
         respuesta = "Disculpa, No entendí tu mensaje"
     return respuesta
@@ -79,6 +78,7 @@ def procesar_mensaje (numero_de_usuario, texto_del_mensaje):
                 return respuesta_meta(nuevo_estado)
             
         elif estado_actual == "informandose_cortes":
+            nuevo_estado = identificar_estado(texto_del_mensaje)
             if nuevo_estado:
                 usuarios[numero_de_usuario]["estado"] = nuevo_estado
                 return respuesta_meta(nuevo_estado)
