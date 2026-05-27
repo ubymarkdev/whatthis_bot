@@ -52,6 +52,9 @@ def webhook(request):
         #varibales que returnan a logic.py
         respuesta = procesar_mensaje(numero_de_usuario, 
                                      texto_del_mensaje)
+        if respuesta is None:
+            return JsonResponse({"status":"ok"})
+        
         print("Respuesta:", respuesta)
         url = "https://graph.facebook.com/v18.0/1115529711636375/messages"
 
