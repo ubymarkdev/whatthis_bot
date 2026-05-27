@@ -21,6 +21,8 @@ def identificar_estado (mensaje):
 def respuesta_meta (estado):
     if estado == "ubicacion":
         respuesta = "Nos ubicamos en Zapopan, Jalisco, le comparto nuestra ubicación: https://maps.app.goo.gl/ZkCWEutdTEjBTi866"
+    elif estado == "saludo":
+        respuesta = "Buenos días! Bienvenido a Icon Stone ¿En qué podemos ayudarle"    
     elif estado == "pre_cotizacion":
         respuesta = "Claro, para realizar su cotización y brindarle precios mediante un asesor nos podría apoyar con los siguentes datos: nos podrías regalar tu nombre y el nombre de la empresa de donde nos contactas si es que vienes de una. Te identificas como: constructora, arquitecto, transformador o cliente final. Esto para ponerte en contacto con uno de nuestros asesores. El te podrá compartir especificaciones y precios del material que necesites"
     elif estado == "informandose":
