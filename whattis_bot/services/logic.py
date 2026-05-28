@@ -13,9 +13,9 @@ def identificar_estado (mensaje):
         estado = "informandose"
     elif (any (palabra in mensaje for palabra in ["hacen cortes", "con estas medidas", "a medida",])):
         estado = "informandose_cortes"
-    elif (any (palabra in mensaje for palabra in ["¡Hola! Quiero más información.", "quiero más información", "mas informacion"])):
+    elif (any (palabra in mensaje for palabra in ["Quiero más información.", "quiero más información", "mas informacion"])):
         estado = "bienvenida_anuncios_placasb_fachaletas"
-    elif (any (palabra in mensaje for palabra in ["Quiero aprovechar las promociones", "Qué promociones"])):
+    elif (any (palabra in mensaje for palabra in ["Quiero aprovechar", "Qué promociones"])):
         estado = "bienvenida_anuncios_promociones"
     else:
         return None
