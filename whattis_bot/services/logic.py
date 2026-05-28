@@ -5,18 +5,19 @@ def identificar_estado (mensaje):
     estado = None
     if (any (palabra in mensaje for palabra in ["ubicación", "ubicacion", "donde se ubican", "donde te encuentras", "donde te ubicas", "dónde estás", "donde estas"])):
         estado = "ubicacion"
+    elif (any (palabra in mensaje for palabra in ["quiero más información.", "quiero más información", "mas informacion"])):
+        estado = "bienvenida_anuncios_placasb_fachaletas"
+    elif (any (palabra in mensaje for palabra in ["quiero aprovechar", "qué promociones"])):
+        estado = "bienvenida_anuncios_promociones"
     elif (any (palabra in mensaje for palabra in ["precios", "precio", "que precio", "necesito cotizar", "para una cotización", "me puede dar precios", "precio por favor"])):
         estado = "pre_cotizacion"
-    elif (any (palabra in mensaje for palabra in ["hola", "buenos días", "buen día", "buen dia", "hola", "buenas tardes"])):
-        estado = "saludo"
     elif (any (palabra in mensaje for palabra in ["que colores", "en este color", "busco", "manejan"])):
         estado = "informandose"
     elif (any (palabra in mensaje for palabra in ["hacen cortes", "con estas medidas", "a medida",])):
         estado = "informandose_cortes"
-    elif (any (palabra in mensaje for palabra in ["Quiero más información.", "quiero más información", "mas informacion"])):
-        estado = "bienvenida_anuncios_placasb_fachaletas"
-    elif (any (palabra in mensaje for palabra in ["Quiero aprovechar", "Qué promociones"])):
-        estado = "bienvenida_anuncios_promociones"
+    elif (any (palabra in mensaje for palabra in ["hola", "buenos días", "buen día", "buen dia", "hola", "buenas tardes"])):
+        estado = "saludo"
+    
     else:
         return None
 
@@ -57,9 +58,11 @@ def procesar_mensaje (numero_de_usuario, texto_del_mensaje):
 
     if usuarios[numero_de_usuario]["estado"] == "intervencion_humana":
         return None
+    
 
     if usuarios[numero_de_usuario]["estado"] is None:
         estado = identificar_estado(texto_del_mensaje)
+        print ("estado: ", estado)
         if estado is None or estado == "informandose":
             usuarios [numero_de_usuario] ["estado"] = "intervencion_humana"
             return "En breve atenderemos tu solicitud"
@@ -104,10 +107,10 @@ def procesar_mensaje (numero_de_usuario, texto_del_mensaje):
                 usuarios[numero_de_usuario]["estado"] = nuevo_estado
                 return respuesta_meta(nuevo_estado)
 
-
+        print ("estado_nuevo:", nuevo_estado)
 
         usuarios[numero_de_usuario]["estado"] = "intervencion_humana"
-        return ("Hola! En un momento nos pondremos en contacto contigo por este mismo medio")    
+        return ("En un momento nos pondremos en contacto contigo por este mismo medio")    
 
 
 
