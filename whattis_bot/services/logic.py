@@ -1,4 +1,6 @@
 usuarios = {}
+BOT_ACTIVO = True
+
 
 def identificar_estado (mensaje):
     mensaje = mensaje.lower()
@@ -46,10 +48,41 @@ def respuesta_meta (estado):
 
 #función principal    
 def procesar_mensaje (numero_de_usuario, texto_del_mensaje):
+    global BOT_ACTIVO
 
     print ("===========================")
     print ("Usuario: ", numero_de_usuario)
     print ("Texto del mensaje: ", texto_del_mensaje)
+
+    #admin control
+    if texto_del_mensaje.lower() == "stop":
+        BOT_ACTIVO = False
+
+        print ("Bot detenido")
+
+        return "El bot se ha apagado correctamente"
+
+    if texto_del_mensaje.lower() == "start":
+        BOT_ACTIVO = True
+
+        print ("Bot encendido")
+
+        return "Bot activado correctamente"
+    
+    if texto_del_mensaje.lower() == "reset":
+
+        if numero_de_usuario in usuarios:
+
+            del usuarios[numero_de_usuario]
+
+            print("Usuario reiniciado")
+
+        return "Sesión reiniciada correctamente"
+
+
+
+    if BOT_ACTIVO is False:
+        return None
 
     if numero_de_usuario not in usuarios:
         usuarios[numero_de_usuario] = {
@@ -69,7 +102,10 @@ def procesar_mensaje (numero_de_usuario, texto_del_mensaje):
         usuarios [numero_de_usuario]["estado"] = estado
         return respuesta_meta(estado)
 
+    
+
     else:
+        nuevo_estado = None
         estado_actual = usuarios[numero_de_usuario]["estado"]
         if estado_actual == "saludo":
             nuevo_estado = identificar_estado (texto_del_mensaje)
@@ -110,7 +146,7 @@ def procesar_mensaje (numero_de_usuario, texto_del_mensaje):
         print ("estado_nuevo:", nuevo_estado)
 
         usuarios[numero_de_usuario]["estado"] = "intervencion_humana"
-        return ("En un momento nos pondremos en contacto contigo por este mismo medio")    
+        return ("Gracias, en un momento nos pondremos en contacto contigo por este mismo medio")    
 
 
 
